@@ -2,7 +2,7 @@ name: Firebase Price Cron
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 매 12시간마다 실행 (UTC 기준)
+    - cron: '0 0 * * *'  # 매 24시간마다 실행 (UTC 기준)
   workflow_dispatch:       # 수동 실행도 가능
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Run script
         env:
-          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_CREDENTIALS }}
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
         run: |
           echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > credentials.json
           export GOOGLE_APPLICATION_CREDENTIALS=credentials.json
